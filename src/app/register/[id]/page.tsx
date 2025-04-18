@@ -7,7 +7,6 @@ import { Select } from "@/components/Select";
 import { z } from "zod";
 import { Textarea } from "@/components/Textarea";
 import { Button } from "@/components/Button";
-import { ShadCnDatePicker } from "@/components/CustomDatePicker";
 import { User, Mail, Phone, CalendarDays } from "lucide-react";
 import { services } from "@/lib/data/Services";
 import { useState, useEffect } from "react";
@@ -15,7 +14,7 @@ import { createBooking } from "@/actions/register.action";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { Service } from '@/lib/types';
+import { Service } from "@/lib/types";
 const formSchema = z.object({
   guest: z.string().min(2),
   phone: z.string().min(10),
@@ -28,7 +27,7 @@ const formSchema = z.object({
 
 export default function BookingPage() {
   const params = useParams();
-  const router=useRouter()
+  const router = useRouter();
   const serviceId = params.id as string;
   const serviceName = services.filter((serv) => serv.id === Number(serviceId));
   console.log(serviceName[0].name);
@@ -63,7 +62,7 @@ export default function BookingPage() {
     try {
       const res = await createBooking({
         serviceId,
-        serviceName:serviceName[0].name,
+        serviceName: serviceName[0].name,
         ...values,
       });
 
@@ -75,7 +74,7 @@ export default function BookingPage() {
 
       toast.success("Booking created successfully!");
       form.reset(); // Clear the form
-      router.push("/")
+      router.push("/");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error("Error submitting booking:", error);
@@ -119,8 +118,8 @@ export default function BookingPage() {
                   {...form.register("guest")}
                   error={form.formState.errors.guest}
                   icon={<Mail className="h-5 w-5 text-purple-500" />}
-                /> 
-                      <Input
+                />
+                <Input
                   label="Duration (Days)"
                   type="number"
                   {...form.register("duration", { valueAsNumber: true })}
@@ -145,8 +144,6 @@ export default function BookingPage() {
                   </h2>
                 </div>
 
-          
-
                 <Select
                   label="Event Type"
                   options={[
@@ -158,17 +155,19 @@ export default function BookingPage() {
                   {...form.register("eventType")}
                   error={form.formState.errors.eventType}
                 />
-
-                <Controller
-                  control={form.control}
-                  name="eventDate"
-                  render={({ field }) => (
-                    <ShadCnDatePicker
-                      field={field}
-                      error={form.formState.errors.eventDate?.message}
-                    />
-                  )}
+                <label className="block text-sm font-medium text-purple-600">
+                  Event Date
+                </label>
+                <input
+                  type="date"
+                  {...form.register("eventDate")}
+                  className="w-full px-4 py-2 border rounded-lg text-purple-600 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
+                {form.formState.errors.eventDate && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {form.formState.errors.eventDate.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="space-y-6">

@@ -11,13 +11,13 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 
 export const Select: React.FC<SelectProps> = ({ label, options, error, ...props }) => (
   <div className="space-y-1">
-    <label className="block text-sm font-medium">{label}</label>
+    <label className="block text-sm font-medium text-purple-600">{label}</label>
     <select
-      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+      className="w-full text-purple-600 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
       {...props}
     >
       {options.map((option) => (
-        <option key={option.value} value={option.value}>
+        <option key={option.value} value={option.value} className="text-purple-600">
           {option.label}
         </option>
       ))}

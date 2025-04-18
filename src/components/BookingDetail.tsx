@@ -76,34 +76,34 @@ export default function BookingDetails({
 
                 <div>
                   <p className="text-sm text-purple-600">Service</p>
-                  <p className="font-medium">{service?.name || "Unknown"}</p>
+                  <p className="font-medium text-gray-600">{service?.name || "Unknown"}</p>
                 </div>
 
                 <div>
                   <p className="text-sm text-purple-600">Event Date</p>
-                  <p className="font-medium">
+                  <p className=" text-gray-600">
                     {new Date(booking.eventDate).toLocaleDateString()}
                   </p>
                 </div>
 
                 <div>
                   <p className="text-sm text-purple-600">Event Type</p>
-                  <p className="font-medium capitalize">{booking.eventType}</p>
+                  <p className=" text-gray-600 capitalize">{booking.eventType}</p>
                 </div>
 
                 <div>
                   <p className="text-sm text-purple-600">Guests</p>
-                  <p className="font-medium">{booking.guests}</p>
+                  <p className=" text-gray-600">{booking.guests}</p>
                 </div>
 
                 <div>
                   <p className="text-sm text-purple-600">Duration (hrs)</p>
-                  <p className="font-medium">{booking.duration}</p>
+                  <p className=" text-gray-600">{booking.duration}</p>
                 </div>
 
                 <div>
                   <p className="text-sm text-purple-600">Total Price</p>
-                  <p className="font-medium flex items-center">
+                  <p className=" text-gray-600 flex items-center">
                     <IndianRupee className="w-4 h-4 mr-1" />
                     {booking.totalPrice?.toLocaleString() || "0"}
                   </p>
@@ -112,7 +112,7 @@ export default function BookingDetails({
                 <div>
                   <p className="text-sm text-purple-600">Booking Status</p>
                   <span
-                    className={`px-2 py-1 rounded-full text-sm font-medium ${
+                    className={`px-2 py-1 rounded-full text-sm  text-gray-600 ${
                       booking.status === "confirmed"
                         ? "bg-green-100 text-green-800"
                         : booking.status === "cancelled"
@@ -127,7 +127,7 @@ export default function BookingDetails({
                 <div>
                   <p className="text-sm text-purple-600">Payment Status</p>
                   <span
-                    className={`px-2 py-1 rounded-full text-sm font-medium ${
+                    className={`px-2 py-1 rounded-full text-sm  text-gray-600 ${
                       booking.paymentStatus === "completed"
                         ? "bg-green-100 text-green-800"
                         : booking.paymentStatus === "failed"
@@ -142,7 +142,7 @@ export default function BookingDetails({
                 {booking.customRequests && (
                   <div className="md:col-span-2">
                     <p className="text-sm text-purple-600">Custom Requests</p>
-                    <p className="font-medium">{booking.customRequests}</p>
+                    <p className=" text-gray-600">{booking.customRequests}</p>
                   </div>
                 )}
               </div>
