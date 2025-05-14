@@ -73,7 +73,7 @@ export default function BookingPage() {
       }
 
       toast.success("Booking created successfully!");
-      form.reset(); // Clear the form
+      form.reset(); 
       router.push("/");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");

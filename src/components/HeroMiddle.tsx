@@ -12,14 +12,12 @@ const HeroMiddle = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
     >
-      {/* Animated background elements */}
       <motion.div 
         className="absolute inset-0 bg-[url('/assets/svg/diamond-pattern.svg')] opacity-10"
         animate={{ rotate: [0, 2, -2, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
       
-      {/* Floating gradient blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute w-[500px] h-[500px] bg-gradient-to-r from-purple-400/20 to-pink-300/20 rounded-full blur-3xl -top-32 -left-32"
@@ -72,8 +70,6 @@ const HeroMiddle = () => {
             Discover the unparalleled experience that sets us apart in creating your dream celebrations
           </motion.p>
         </div>
-
-        {/* Feature cards */}
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {[
             {
@@ -106,12 +102,9 @@ const HeroMiddle = () => {
               transition={{ delay: index * 0.2 + 0.4 }}
               viewport={{ once: true }}
             >
-              {/* Hover effect layer */}
               <motion.div
                 className={`absolute inset-0 bg-gradient-to-br ${feature.bg} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
               />
-              
-              {/* Icon container */}
               <motion.div
                 className={`mb-8 inline-flex items-center justify-center rounded-2xl ${feature.color} p-4 shadow-lg relative overflow-hidden`}
                 whileHover={{ scale: 1.05 }}
@@ -124,16 +117,12 @@ const HeroMiddle = () => {
                   {feature.icon}
                 </motion.div>
               </motion.div>
-
-              {/* Content */}
               <h3 className="text-2xl lg:text-3xl font-semibold text-purple-900 mb-4 font-playfair">
                 {feature.title}
               </h3>
               <p className="text-lg text-purple-700/90 leading-relaxed mb-6">
                 {feature.text}
               </p>
-
-              {/* Animated border */}
               <motion.div
                 className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-white/20"
                 initial={{ scale: 0.95 }}
@@ -143,8 +132,6 @@ const HeroMiddle = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA Button */}
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0 }}
@@ -158,7 +145,7 @@ const HeroMiddle = () => {
           >
             <Link href={"/signin"}>
               <motion.span 
-                className="relative z-10 flex items-center gap-2"
+                className="relative z-10 flex items-center text-white gap-2"
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.95 }}
               >
